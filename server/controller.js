@@ -25,6 +25,7 @@ module.exports = {
                 rating INT REFERENCES countries(country_id)
 
             );
+        
 
             insert into countries (name)
             values ('Afghanistan'),
@@ -254,7 +255,8 @@ module.exports = {
             countries.name AS country
         FROM cities
         JOIN countries
-        ON rating = country_id;`)
+        ON rating = country_id
+        ORDER BY rating DESC`)
         .then(dbRes => {
             res.status(200).send(dbRes[0]) 
         })
